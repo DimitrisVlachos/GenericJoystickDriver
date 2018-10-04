@@ -5,7 +5,11 @@
 */
 #ifndef _generic_joy_driver_hpp_
 #define _generic_joy_driver_hpp_
-#include "../types.hpp"
+#include <string>
+#include <stdio.h>
+#include <stdint.h>
+#include <iostream>
+#include <vector>
 #include <SDL/SDL.h>
 
 class generic_joystick_driver_c {
