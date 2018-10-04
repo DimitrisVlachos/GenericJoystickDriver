@@ -5,7 +5,7 @@
 */
 
 #include "generic_joy_driver.hpp"
-#include "../trace/trace.hpp"
+//#include "../trace/trace.hpp"
 template <typename T>
 static inline void make_room(std::vector<T>& v,const size_t r) {
 	if ((v.size() > r))
@@ -71,17 +71,17 @@ void generic_joystick_driver_c::close() {
 }
 
 bool generic_joystick_driver_c::open(const size_t which_joy) {
-    trace_log("Starting JOY...\n");
+    //trace_log("Starting JOY...\n");
     memset(&m_event,0,sizeof(m_event));
 
     if( SDL_Init( SDL_INIT_JOYSTICK ) < 0 ) {
-       trace_log( "Could not initialize JOY SUBSYS! Error: %s\n", SDL_GetError() );
+       //trace_log( "Could not initialize JOY SUBSYS! Error: %s\n", SDL_GetError() );
         return false ;
     }
 
     const int32_t n_joy = (int32_t)SDL_NumJoysticks();
     if( n_joy < 1 ) {
-        trace_log( "Warning: No joysticks connected!\n" );
+        //trace_log( "Warning: No joysticks connected!\n" );
         return false;
     }
 
@@ -95,7 +95,7 @@ bool generic_joystick_driver_c::open(const size_t which_joy) {
     m_joy_controller = SDL_JoystickOpen( which_joy );
 
     if( m_joy_controller == nullptr ) {
-        trace_log( "Warning: Unable to open game controller! Error: %s\n", SDL_GetError() );
+        //trace_log( "Warning: Unable to open game controller! Error: %s\n", SDL_GetError() );
         SDL_Quit();
         return false;
     }
